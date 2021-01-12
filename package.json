@@ -16,8 +16,11 @@
     "type": "git",
     "url": "git+https://github.com/jpkleemans/vite-svg-loader.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Jan-Paul Kleemans",
+    "email": "jpkleemans@gmail.com"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jpkleemans/vite-svg-loader/issues"
   },
