@@ -16,7 +16,7 @@ import MyIcon from './my-icon.svg'
 
 ### Install
 ```bash
-npm i vite-svg-loader
+npm install vite-svg-loader --save-dev
 ```
 
 ### Setup
