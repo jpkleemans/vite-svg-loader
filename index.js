@@ -1,7 +1,7 @@
 const fs = require('fs').promises
 const { compileTemplate } = require('@vue/compiler-sfc')
 
-export default function () {
+module.exports = function () {
   return {
     name: 'svg-loader',
     enforce: 'pre',
