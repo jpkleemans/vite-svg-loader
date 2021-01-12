@@ -3,7 +3,7 @@ import { compileTemplate } from '@vue/compiler-sfc'
 
 export default function () {
   return {
-    name: 'vue-svg-loader',
+    name: 'svg-loader',
     enforce: 'pre',
 
     async load (id) {
