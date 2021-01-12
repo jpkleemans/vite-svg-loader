@@ -1,5 +1,5 @@
-import { promises as fs } from 'fs'
-import { compileTemplate } from '@vue/compiler-sfc'
+const fs = require('fs').promises
+const { compileTemplate } = require('@vue/compiler-sfc')
 
 export default function () {
   return {
