@@ -3,9 +3,7 @@ SVG loader for Vite 2.x
 
 ### Install
 ```bash
-yarn add --dev vite-svg-loader
-
-npm i -D vite-svg-loader
+npm i vite-svg-loader
 ```
 
 ### Setup
