@@ -19,3 +19,15 @@ export default {
   plugins: [vue(), svgLoader()]
 }
 ```
+
+### Usage
+
+```vue
+<template>
+  <MyIcon />
+</template>
+
+<script setup>
+import MyIcon from './my-icon.svg'
+</script>
+```
