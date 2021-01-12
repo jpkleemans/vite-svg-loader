@@ -1,5 +1,5 @@
 # Vite SVG loader
-SVG loader for Vite 2.x
+Vite 2.x plugin to use SVG files as Vue components.
 
 ```vue
 <template>
