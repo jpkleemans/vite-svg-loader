@@ -31,7 +31,8 @@ export default {
 ```
 
 ### Use with TypeScript
-If you'd like to use the loader in a TypeScript project, you'll need to add the following type definition to your `tsconfig.json` file:
+If you use the loader in a Typescript project, you might get warnings like `Type 'string' is not assignable to type 'Component'`.
+To fix this you'll need to add the following type definitions to your compiler options:
 
 #### `tsconfig.json`
 ```json
