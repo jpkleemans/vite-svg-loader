@@ -1,3 +1,4 @@
+const { extname } = require("path")
 const fs = require('fs').promises
 const { compileTemplate } = require('@vue/compiler-sfc')
 
@@ -7,7 +8,7 @@ module.exports = function () {
     enforce: 'pre',
 
     async load (id) {
-      if (!id.endsWith('.svg')) {
+      if (!extname(id).startsWith('.svg')) {
         return null
       }
 
