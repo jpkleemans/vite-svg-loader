@@ -7,8 +7,8 @@ module.exports = function () {
     enforce: 'pre',
 
     async load (id) {
-      if (! id.endsWith('.svg')) {
-        return null; 
+      if (!id.endsWith('.svg')) {
+        return null
       }
 
       const svg = await fs.readFile(id, 'utf-8')
