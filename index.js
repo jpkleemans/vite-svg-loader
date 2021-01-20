@@ -13,7 +13,7 @@ export default function () {
       if (!extname(path).startsWith('.svg')) {
         return null
       }
-      
+
       const svg = await fs.readFile(path, 'utf-8')
 
       const { code } = compileTemplate({
