@@ -22,11 +22,22 @@ npm install vite-svg-loader --save-dev
 ### Setup
 
 #### `vite.config.js`
-
 ```js
 import svgLoader from 'vite-svg-loader'
 
 export default {
   plugins: [vue(), svgLoader()]
+}
+```
+
+### Use with TypeScript
+If you'd like to use the loader in a TypeScript project, you'll need to add the following type definition to your `tsconfig.json` file:
+
+#### `tsconfig.json`
+```json
+{
+  "compilerOptions": {
+    "types": ["vite-svg-loader", "vite/client"]
+  }
 }
 ```
