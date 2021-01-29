@@ -1,5 +1,6 @@
 declare module 'vite-svg-loader' {
-  const svgLoader: Function
+  import { Plugin } from 'vite'
+  function svgLoader(): Plugin
   export default svgLoader
 }
 
