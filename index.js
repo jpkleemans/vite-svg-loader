@@ -2,7 +2,7 @@ const { extname } = require('path')
 const fs = require('fs').promises
 const { compileTemplate } = require('@vue/compiler-sfc')
 
-module.exports = function () {
+module.exports = function svgLoader () {
   return {
     name: 'svg-loader',
     enforce: 'pre',
