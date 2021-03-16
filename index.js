@@ -10,7 +10,7 @@ module.exports = function svgLoader () {
     async load (id) {
       const [path, parameter] = id.split('?')
 
-      if (!extname(path).startsWith('.svg') || parameter === 'url') {
+      if (!extname(path).startsWith('.svg') || parameter === 'url') {
         return null
       }
 
