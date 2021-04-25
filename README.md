@@ -39,7 +39,7 @@ To fix this you'll need to add the following type definitions to your compiler o
 ```json
 {
   "compilerOptions": {
-    "types": ["vite-svg-loader", "vite/client"]
+    "types": ["vite/client", "vite-svg-loader"]
   }
 }
 ```
