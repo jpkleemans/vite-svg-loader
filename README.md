@@ -44,13 +44,10 @@ svgLoader({
 
 ### Use with TypeScript
 If you use the loader in a Typescript project, you might get warnings like `Type 'string' is not assignable to type 'Component'`.
-To fix this you'll need to add the following type definitions to your compiler options:
+To fix this you'll need to add the type definitions to `src/vite-env.d.ts`:
 
-#### `tsconfig.json`
-```json
-{
-  "compilerOptions": {
-    "types": ["vite-svg-loader", "vite/client"]
-  }
-}
+#### `src/vite-env.d.ts`
+```ts
+/// <reference types="vite-svg-loader" />
+/// <reference types="vite/client" />
 ```
