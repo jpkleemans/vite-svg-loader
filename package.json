@@ -1,6 +1,6 @@
 {
   "name": "vite-svg-loader",
-  "version": "1.5.1",
+  "version": "2.0.0",
   "description": "Vite 2.x plugin to load SVG files as Vue components",
   "keywords": [
     "vite",
@@ -10,7 +10,8 @@
   "main": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "@vue/compiler-sfc": "^3.0.11"
+    "@vue/compiler-sfc": "^3.0.11",
+    "svgo": "^2.3.0"
   },
   "devDependencies": {
     "standard": "^16.0.3"

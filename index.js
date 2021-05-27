@@ -1,8 +1,11 @@
 const { extname } = require('path')
 const fs = require('fs').promises
 const { compileTemplate } = require('@vue/compiler-sfc')
+const { optimize: optimizeSvg } = require('svgo')
 
-module.exports = function svgLoader () {
+module.exports = function svgLoader (options = {}) {
+  const { svgoConfig } = options
+
   return {
     name: 'svg-loader',
     enforce: 'pre',
@@ -16,9 +19,11 @@ module.exports = function svgLoader () {
 
       const svg = await fs.readFile(path, 'utf-8')
 
+      const optimizedSvg = optimizeSvg(svg, svgoConfig).data
+
       const { code } = compileTemplate({
         id: JSON.stringify(id),
-        source: svg,
+        source: optimizedSvg,
         transformAssetUrls: false
       })
 
