@@ -47,7 +47,7 @@ If you use the loader in a Typescript project, you might get warnings like `Type
 To fix this you'll need to add the type definitions to `src/vite-env.d.ts`:
 
 #### `src/vite-env.d.ts`
-```ts
-/// <reference types="vite-svg-loader" />
-/// <reference types="vite/client" />
+```diff
++   /// <reference types="vite-svg-loader" />
+    /// <reference types="vite/client" />
 ```
