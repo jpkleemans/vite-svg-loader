@@ -56,6 +56,6 @@ You'll also need to add the type definitions to `src/vite-env.d.ts`:
 
 #### `src/vite-env.d.ts`
 ```diff
-+   /// <reference types="vite-svg-loader" />
     /// <reference types="vite/client" />
++   /// <reference types="vite-svg-loader" />
 ```
