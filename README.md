@@ -46,7 +46,7 @@ svgLoader({
 #### `vite.config.js`
 ```js
 svgLoader({
-  disabledSvgo: true
+  svgo: false
 })
 ```
 
