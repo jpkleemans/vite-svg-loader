@@ -42,6 +42,14 @@ svgLoader({
 })
 ```
 
+### Disable SVGO
+#### `vite.config.js`
+```js
+svgLoader({
+  svgo: false
+})
+```
+
 ### Use with TypeScript
 If you use the loader in a Typescript project, you'll need to import your svg files with the `?component` param: `import MyIcon from './my-icon.svg?component'`.
 You'll also need to add the type definitions to `src/vite-env.d.ts`:
