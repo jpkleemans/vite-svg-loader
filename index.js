@@ -1,33 +1,47 @@
-const { extname } = require('path')
 const fs = require('fs').promises
 const { compileTemplate } = require('@vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
 
-module.exports = function svgLoader (options = {}) {
+module.exports = function svgLoader(options = {}) {
   const { svgoConfig, svgo } = options
 
+  const svgRegex = /\.svg(\?(raw|url|component))?$/
   return {
     name: 'svg-loader',
     enforce: 'pre',
-
-    async load (id) {
-      const [path, parameter] = id.split('?')
-
-      if (!extname(path).startsWith('.svg') || parameter === 'url') {
-        return null
+    resolveid() {
+      return id.match(svgRegex) ? id : null
+    },
+    async load(id) {
+      if (!id.match(svgRegex)) {
+        return
       }
+      const [path, query] = id.split("?", 2)
+      if (query == "url") {
+        return path
+      } else if (query == "raw") {
+        return await fs.readFile(path, 'utf-8')
+      }
+    },
+    async transform(src, id) {
+      if (!id.match(svgRegex)) {
+        return
+      }
+      const [path, query] = id.split("?", 2)
+      if (query == "component") {
+        const svg = await fs.readFile(path, 'utf-8')
+        const optimizedSvg = svgo === false ? svg : optimizeSvg(svg, svgoConfig).data
 
-      const svg = await fs.readFile(path, 'utf-8')
-
-      const optimizedSvg = svgo === false ? svg : optimizeSvg(svg, svgoConfig).data
-
-      const { code } = compileTemplate({
-        id: JSON.stringify(id),
-        source: optimizedSvg,
-        transformAssetUrls: false
-      })
-
-      return `${code}\nexport default render`
+        let { code, ast, map } = compileTemplate({
+          id: JSON.stringify(id),
+          source: optimizedSvg,
+          filename: path,
+          transformAssetUrls: false,
+        });
+        code = code.replace('export function render', 'function render');
+        return { code: `${code}\nexport default render`, ast, map }
+      }
+      return `export default ${JSON.stringify(src)}`
     }
   }
 }
