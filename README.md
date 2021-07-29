@@ -26,9 +26,9 @@ npm install vite-svg-loader --save-dev
 ```js
 import svgLoader from 'vite-svg-loader'
 
-export default {
+export default defineConfig({
   plugins: [vue(), svgLoader()]
-}
+})
 ```
 
 ### SVGO Configuration
