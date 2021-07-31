@@ -9,7 +9,7 @@ module.exports = function svgLoader(options = {}) {
   return {
     name: 'svg-loader',
     enforce: 'pre',
-    resolveid() {
+    resolveid(id) {
       return id.match(svgRegex) ? id : null
     },
     async load(id) {
@@ -17,9 +17,9 @@ module.exports = function svgLoader(options = {}) {
         return
       }
       const [path, query] = id.split("?", 2)
-      if (query == "url") {
+      if (query === "url") {
         return path
-      } else if (query == "raw") {
+      } else if (query === "raw") {
         return await fs.readFile(path, 'utf-8')
       }
     },
@@ -28,7 +28,7 @@ module.exports = function svgLoader(options = {}) {
         return
       }
       const [path, query] = id.split("?", 2)
-      if (query == "component") {
+      if (query === "component") {
         const svg = await fs.readFile(path, 'utf-8')
         const optimizedSvg = svgo === false ? svg : optimizeSvg(svg, svgoConfig).data
 
