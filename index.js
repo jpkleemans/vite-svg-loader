@@ -31,3 +31,4 @@ module.exports = function svgLoader (options = {}) {
     }
   }
 }
+module.exports.default = module.exports
