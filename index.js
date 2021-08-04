@@ -16,6 +16,7 @@ module.exports = function svgLoader (options = {}) {
       if (!id.match(svgRegex)) {
         return
       }
+
       const [path, query] = id.split('?', 2)
       if (query === 'url') {
         return path
@@ -27,8 +28,9 @@ module.exports = function svgLoader (options = {}) {
       if (!id.match(svgRegex)) {
         return
       }
+
       const [path, query] = id.split('?', 2)
-      if (query === 'component') {
+      if (query === 'component' || query === undefined) {
         const svg = await fs.readFile(path, 'utf-8')
         const optimizedSvg = svgo === false ? svg : optimizeSvg(svg, svgoConfig).data
 
@@ -39,8 +41,10 @@ module.exports = function svgLoader (options = {}) {
           transformAssetUrls: false
         })
         code = code.replace('export function render', 'function render')
+
         return { code: `${code}\nexport default render`, ast, map }
       }
+
       return `export default ${JSON.stringify(src)}`
     }
   }
