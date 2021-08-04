@@ -45,7 +45,7 @@ module.exports = function svgLoader (options = {}) {
         return { code: `${code}\nexport default render`, ast, map }
       }
 
-      return `export default ${JSON.stringify(src)}`
+      return `${code}\nexport default render`
     }
   }
 }
