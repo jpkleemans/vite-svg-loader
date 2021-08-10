@@ -2,17 +2,17 @@ const fs = require('fs').promises
 const { compileTemplate } = require('@vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
 
-module.exports = function svgLoader (options = {}) {
+module.exports = function svgLoader(options = {}) {
   const { svgoConfig, svgo } = options
 
   const svgRegex = /\.svg(\?(raw|url|component))?$/
   return {
     name: 'svg-loader',
     enforce: 'pre',
-    resolveid (id) {
+    resolveid(id) {
       return id.match(svgRegex) ? id : null
     },
-    async load (id) {
+    async load(id) {
       if (!id.match(svgRegex)) {
         return
       }
@@ -25,7 +25,7 @@ module.exports = function svgLoader (options = {}) {
         return await fs.readFile(path, 'utf-8')
       }
     },
-    async transform (src, id) {
+    async transform(src, id) {
       if (!id.match(svgRegex)) {
         return
       }
@@ -37,7 +37,7 @@ module.exports = function svgLoader (options = {}) {
 
         const optimizedSvg = svgo === false ? svg : optimizeSvg(svg, svgoConfig).data
 
-        let { code, ast, map } = compileTemplate({
+        let { code } = compileTemplate({
           id: JSON.stringify(id),
           source: optimizedSvg,
           filename: path,
@@ -46,7 +46,7 @@ module.exports = function svgLoader (options = {}) {
 
         code = code.replace('export function render', 'function render')
 
-        return { code: `${code}\nexport default render`, ast, map }
+        return `${code}\nexport default render`
       }
 
       return `export default ${JSON.stringify(src)}`
