@@ -6,12 +6,15 @@ module.exports = function svgLoader (options = {}) {
   const { svgoConfig, svgo } = options
 
   const svgRegex = /\.svg(\?(raw|url|component))?$/
+
   return {
     name: 'svg-loader',
     enforce: 'pre',
+
     resolveid (id) {
       return id.match(svgRegex) ? id : null
     },
+
     async load (id) {
       if (!id.match(svgRegex)) {
         return
@@ -25,6 +28,7 @@ module.exports = function svgLoader (options = {}) {
         return await fs.readFile(path, 'utf-8')
       }
     },
+
     async transform (src, id) {
       if (!id.match(svgRegex)) {
         return
@@ -33,24 +37,25 @@ module.exports = function svgLoader (options = {}) {
       const [path, query] = id.split('?', 2)
 
       if (query === 'component' || query === undefined) {
-        const svg = await fs.readFile(path, 'utf-8')
+        let svg = await fs.readFile(path, 'utf-8')
 
-        const optimizedSvg = svgo === false ? svg : optimizeSvg(svg, svgoConfig).data
+        if (svgo !== false) {
+          svg = optimizeSvg(svg, svgoConfig).data
+        }
 
-        let { code } = compileTemplate({
+        const { code } = compileTemplate({
           id: JSON.stringify(id),
-          source: optimizedSvg,
+          source: svg,
           filename: path,
           transformAssetUrls: false
         })
 
-        code = code.replace('export function render', 'export default function render')
-
-        return code
+        return `${code}\nexport default render`
       }
 
       return `export default ${JSON.stringify(src)}`
     }
   }
 }
+
 module.exports.default = module.exports
