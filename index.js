@@ -1,22 +1,25 @@
 const fs = require('fs').promises
 const { compileTemplate } = require('@vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
+const { createFilter } = require('@rollup/pluginutils');
 
 module.exports = function svgLoader (options = {}) {
-  const { svgoConfig, svgo } = options
+  const { svgoConfig, svgo, include, exclude } = options
 
   const svgRegex = /\.svg(\?(raw|url|component))?$/
+
+  const filter = createFilter(include, exclude);
 
   return {
     name: 'svg-loader',
     enforce: 'pre',
 
     resolveid (id) {
-      return id.match(svgRegex) ? id : null
+      return id.match(svgRegex) && filter(id) ? id : null
     },
 
     async load (id) {
-      if (!id.match(svgRegex)) {
+      if (!id.match(svgRegex) || !filter(id)) {
         return
       }
 
@@ -30,7 +33,7 @@ module.exports = function svgLoader (options = {}) {
     },
 
     async transform (src, id) {
-      if (!id.match(svgRegex)) {
+      if (!id.match(svgRegex) || !filter(id)) {
         return
       }
 
