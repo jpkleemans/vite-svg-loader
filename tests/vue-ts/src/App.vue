@@ -2,22 +2,21 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from "./components/HelloWorld.vue";
+import Test from "./assets/test.svg";
+import testUrl from "./assets/test.svg?url";
+import testRaw from "./assets/test.svg?raw";
 </script>
 
 <template>
-  <Test />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <Test class="test-svg" />
+
+  <img src="./assets/test.svg">
+
+  <div>{{ testUrl }}</div>
+  <div>{{ testRaw }}</div>
+
+  <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import Test from "./assets/test.svg";
-
-export default defineComponent({
-  components: { Test },
-});
-</script>
-
 
 <style>
 #app {

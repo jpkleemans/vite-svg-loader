@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "cypress": "^8.6.0"
+  },
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "vue": "cd vue && npm run dev",
+    "vue-ts": "cd vue-ts && npm run dev"
+  }
+}
