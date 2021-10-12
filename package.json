@@ -14,10 +14,13 @@
     "svgo": "^2.7.0"
   },
   "devDependencies": {
+    "cypress": "^8.6.0",
     "standard": "^16.0.3"
   },
   "scripts": {
-    "lint": "standard --fix"
+    "lint": "standard --fix",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "repository": {
     "type": "git",

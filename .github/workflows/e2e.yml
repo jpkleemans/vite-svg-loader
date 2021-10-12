@@ -10,9 +10,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
-          build: cd vue && npm install
-          start: cd vue && npm run dev
+          build: cd ./examples/vue && npm install
+          start: cd ./examples/vue && npm run dev
           wait-on: http://localhost:3000
-defaults:
-  run:
-    working-directory: tests
