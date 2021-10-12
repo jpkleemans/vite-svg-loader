@@ -2,7 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from "./components/HelloWorld.vue";
-import Test from "./assets/test.svg";
+import Test from "./assets/test.svg?component";
 import testUrl from "./assets/test.svg?url";
 import testRaw from "./assets/test.svg?raw";
 </script>
