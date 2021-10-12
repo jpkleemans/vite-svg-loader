@@ -21,8 +21,8 @@
     "lint": "standard --fix",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "example:install":"cd ./examples/vue && npm ci",
-    "example:run":"cd ./examples/vue && (npm run dev&)"
+    "example:install": "cd ./examples/vue && npm ci && npm run build",
+    "example:run": "cd ./examples/vue && npm run serve"
   },
   "repository": {
     "type": "git",
