@@ -5,9 +5,17 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <Test />
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
+
+<script>
+import Test from './assets/test.svg'
+
+export default {
+  components: { Test }
+}
+</script>
 
 <style>
 #app {
