@@ -20,7 +20,9 @@
   "scripts": {
     "lint": "standard --fix",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "example:install":"cd ./examples/vue && npm ci",
+    "example:run":"cd ./examples/vue && npm run dev"
   },
   "repository": {
     "type": "git",
