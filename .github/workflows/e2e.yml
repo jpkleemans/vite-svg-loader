@@ -1,0 +1,17 @@
+name: End-to-end tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          build: npm run example:build
+          start: npm run example:serve
+          wait-on: http://localhost:5000
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
