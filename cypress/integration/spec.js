@@ -25,10 +25,10 @@ describe('Vite SVG Loader', () => {
   })
 
   it('supports ?url param', () => {
-    cy.contains('/assets/test.0ac3d082.svg')
+    cy.get('#url').contains(/^\/assets\/test\..+\.svg/)
   })
 
   it('supports ?raw param', () => {
-    cy.contains('<?xml version="1.0"?>')
+    cy.get('#raw').contains('<?xml version="1.0"?>')
   })
 })

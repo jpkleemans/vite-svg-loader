@@ -12,9 +12,9 @@ import testRaw from './assets/test.svg?raw'
 
   <img src="./assets/test.svg?url">
 
-  <div>{{ testUrl }}</div>
-  <div>{{ testRaw }}</div>
- 
+  <div id="url">{{ testUrl }}</div>
+  <div id="raw">{{ testRaw }}</div>
+
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
 
