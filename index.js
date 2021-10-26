@@ -12,7 +12,9 @@ module.exports = function svgLoader (options = {}) {
     enforce: 'pre',
 
     resolveid (id) {
-      return id.match(svgRegex) ? id : null
+      if (id.match(svgRegex)) {
+        return id
+      }
     },
 
     async load (id) {
@@ -23,37 +25,27 @@ module.exports = function svgLoader (options = {}) {
       const [path, query] = id.split('?', 2)
 
       if (query === 'url') {
-        return path
-      } else if (query === 'raw') {
-        return await fs.readFile(path, 'utf-8')
-      }
-    },
-
-    async transform (src, id) {
-      if (!id.match(svgRegex)) {
-        return
+        return // Use default svg loader
       }
 
-      const [path, query] = id.split('?', 2)
+      let svg = await fs.readFile(path, 'utf-8')
 
-      if (query === 'component' || query === undefined) {
-        let svg = await fs.readFile(path, 'utf-8')
-
-        if (svgo !== false) {
-          svg = optimizeSvg(svg, svgoConfig).data
-        }
-
-        const { code } = compileTemplate({
-          id: JSON.stringify(id),
-          source: svg,
-          filename: path,
-          transformAssetUrls: false
-        })
-
-        return `${code}\nexport default render`
+      if (query === 'raw') {
+        return `export default ${JSON.stringify(svg)}`
       }
 
-      return `export default ${JSON.stringify(src)}`
+      if (svgo !== false) {
+        svg = optimizeSvg(svg, svgoConfig).data
+      }
+
+      const { code } = compileTemplate({
+        id: JSON.stringify(id),
+        source: svg,
+        filename: path,
+        transformAssetUrls: false
+      })
+
+      return `${code}\nexport default render`
     }
   }
 }

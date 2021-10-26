@@ -10,7 +10,7 @@ import testRaw from './assets/test.svg?raw'
 <template>
   <Test class="test-svg" />
 
-  <img src="./assets/test.svg">
+  <img src="./assets/test.svg?url">
 
   <div>{{ testUrl }}</div>
   <div>{{ testRaw }}</div>
