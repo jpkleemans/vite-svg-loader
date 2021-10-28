@@ -1,30 +1,36 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+/// <reference types="vite-svg-loader" />
+import { defineAsyncComponent } from "vue";
+
 import HelloWorld from "./components/HelloWorld.vue";
 import Test from "./assets/test.svg?component";
 import testUrl from "./assets/test.svg?url";
 import testRaw from "./assets/test.svg?raw";
+
+const name = "circle";
+const Async = defineAsyncComponent(() => import(`./assets/${name}.svg?component`));
 </script>
 
 <template>
-  <Test class="test-svg" />
+  <div id="component">
+    <Test class="test-svg" />
+  </div>
 
-  <img src="./assets/test.svg">
+  <div id="image">
+    <img src="./assets/test.svg?url">
+  </div>
 
-  <div>{{ testUrl }}</div>
-  <div>{{ testRaw }}</div>
+  <div id="async">
+    <Async />
+  </div>
+
+  <div id="url">
+    {{ testUrl }}
+  </div>
+
+  <div id="raw">
+    {{ testRaw }}
+  </div>
 
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

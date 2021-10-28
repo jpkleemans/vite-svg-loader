@@ -32,8 +32,29 @@ export default defineConfig({
 })
 ```
 
-### SVGO Configuration
+### Import params
+### URL
+SVGs can be imported as URLs using the `?url` suffix:
+```js
+import iconUrl from './my-icon.svg?url'
+// '/assets/my-icon.2d8efhg.svg'
+```
 
+### Raw
+SVGs can be imported as strings using the `?raw` suffix:
+```js
+import iconRaw from './my-icon.svg?raw'
+// '<?xml version="1.0"?>...'
+```
+
+### Component
+SVGs can be explicitly imported as Vue components using the `?component` suffix:
+```js
+import IconComponent from './my-icon.svg?component'
+// <IconComponent />
+```
+
+### SVGO Configuration
 #### `vite.config.js`
 ```js
 svgLoader({
@@ -53,10 +74,8 @@ svgLoader({
 
 ### Use with TypeScript
 If you use the loader in a Typescript project, you'll need to import your svg files with the `?component` param: `import MyIcon from './my-icon.svg?component'`.
-You'll also need to add the type definitions to `src/vite-env.d.ts`:
 
-#### `src/vite-env.d.ts`
-```diff
-    /// <reference types="vite/client" />
-+   /// <reference types="vite-svg-loader" />
+You'll also need to reference the type definitions:
+```ts
+/// <reference types="vite-svg-loader" />
 ```
