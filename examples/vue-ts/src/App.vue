@@ -1,5 +1,5 @@
 <script setup lang="ts">
-/// <reference types="vite-svg-loader" />
+/// <reference path="../index.d.ts" />
 import { defineAsyncComponent } from "vue";
 
 import HelloWorld from "./components/HelloWorld.vue";
@@ -8,7 +8,7 @@ import testUrl from "./assets/test.svg?url";
 import testRaw from "./assets/test.svg?raw";
 
 const name = "circle";
-const Async = defineAsyncComponent(() => import(`./assets/${name}.svg?component`));
+const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`));
 </script>
 
 <template>
