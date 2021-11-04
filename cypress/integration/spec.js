@@ -16,6 +16,11 @@ describe('Vite SVG Loader', () => {
     cy.get('#component svg.test-svg').should('exist')
   })
 
+  it('accepts other attributes', () => {
+    cy.get('#component svg[data-animal="bird"]').should('exist')
+    cy.get('#component svg[aria-hidden="true"]').should('exist')
+  })
+
   it('loads svg file via <img>', () => {
     cy.get('#image img')
       .should('exist')

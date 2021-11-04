@@ -12,7 +12,7 @@ const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`))
 
 <template>
   <div id="component">
-    <Test class="test-svg" />
+    <Test class="test-svg" data-animal="bird" aria-hidden="true" />
   </div>
 
   <div id="image">
