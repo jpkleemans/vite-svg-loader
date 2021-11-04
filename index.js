@@ -5,7 +5,7 @@ const { optimize: optimizeSvg } = require('svgo')
 module.exports = function svgLoader (options = {}) {
   const { svgoConfig, svgo } = options
 
-  const svgRegex = /\.svg(\?(raw|url|component))?$/
+  const svgRegex = /\.svg(\?(raw|component))?$/
 
   return {
     name: 'svg-loader',
@@ -23,10 +23,6 @@ module.exports = function svgLoader (options = {}) {
       }
 
       const [path, query] = id.split('?', 2)
-
-      if (query === 'url') {
-        return // Use default svg loader
-      }
 
       let svg = await fs.readFile(path, 'utf-8')
 
