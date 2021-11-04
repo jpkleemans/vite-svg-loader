@@ -45,7 +45,7 @@ module.exports = function svgLoader (options = {}) {
         transformAssetUrls: false
       })
 
-      return `${code}\nexport default render`
+      return `${code}\nexport default { render: render }`
     }
   }
 }
