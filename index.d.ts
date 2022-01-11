@@ -6,8 +6,8 @@ declare module 'vite-svg-loader' {
 }
 
 declare module '*.svg?component' {
-  import { Component } from 'vue'
-  const src: Component
+  import { FunctionalComponent, SVGAttributes } from 'vue'
+  const src: FunctionalComponent<SVGAttributes>
   export default src
 }
 
