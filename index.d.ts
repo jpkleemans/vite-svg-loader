@@ -12,11 +12,11 @@ declare module '*.svg?component' {
 }
 
 declare module '*.svg?url' {
-  const src: String
+  const src: string
   export default src
 }
 
 declare module '*.svg?raw' {
-  const src: String
+  const src: string
   export default src
 }
