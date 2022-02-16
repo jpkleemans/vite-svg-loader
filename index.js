@@ -3,9 +3,11 @@ const { compileTemplate } = require('@vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
 
 module.exports = function svgLoader (options = {}) {
-  const { svgoConfig, svgo } = options
+  const { svgoConfig, svgo, defaultImport } = options
 
-  const svgRegex = /\.svg(\?(raw|component))?$/
+  const svgRegex = defaultImport === 'url'
+    ? /\.svg\?(raw|component)$/ // only process if resource has ?raw or ?component query param
+    : /\.svg(\?(raw|component))?$/
 
   return {
     name: 'svg-loader',
@@ -26,7 +28,7 @@ module.exports = function svgLoader (options = {}) {
 
       let svg = await fs.readFile(path, 'utf-8')
 
-      if (query === 'raw') {
+      if (query === 'raw' || (query == null && defaultImport === 'raw')) {
         return `export default ${JSON.stringify(svg)}`
       }
 
