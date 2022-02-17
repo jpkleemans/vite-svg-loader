@@ -30,8 +30,10 @@ module.exports = function svgLoader (options = {}) {
         return `export default ${JSON.stringify(svg)}`
       }
       
-      if (svgoConfig !== false) {
-        svgoConfig.path = path
+      let deletePath = false;
+      if (svgoConfig !== false && svgoConfig.path === undefined){
+        svgoConfig.path = path;
+        deletePath = true;
       }
       
       if (svgo !== false) {
@@ -44,6 +46,10 @@ module.exports = function svgLoader (options = {}) {
         filename: path,
         transformAssetUrls: false
       })
+      
+      if (deletePath) {
+        delete svgoConfig.path;
+      }
 
       return `${code}\nexport default { render: render }`
     }
