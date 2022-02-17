@@ -54,6 +54,18 @@ import IconComponent from './my-icon.svg?component'
 // <IconComponent />
 ```
 
+### Default import config
+When no explicit params are provided SVGs will be imported as Vue components by default.
+This can be changed using the `defaultImport` config setting,
+such that SVGs without params will be imported as URLs (or raw strings) instead.
+
+#### `vite.config.js`
+```js
+svgLoader({
+  defaultImport: 'url' // or 'raw'
+})
+```
+
 ### SVGO Configuration
 #### `vite.config.js`
 ```js
