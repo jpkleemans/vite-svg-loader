@@ -3,7 +3,7 @@ const { compileTemplate } = require('@vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
 
 module.exports = function svgLoader (options = {}) {
-  const { svgoConfig, svgo, setSvgPath } = options
+  const { svgoConfig, svgo } = options
 
   const svgRegex = /\.svg(\?(raw|component))?$/
 
@@ -30,7 +30,7 @@ module.exports = function svgLoader (options = {}) {
         return `export default ${JSON.stringify(svg)}`
       }
       
-      if (setSvgPath) {
+      if (svgoConfig !== false) {
         svgoConfig.path = path
       }
       
