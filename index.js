@@ -31,7 +31,7 @@ module.exports = function svgLoader (options = {}) {
       }
       
       let deletePath = false;
-      if (svgoConfig !== false && svgoConfig.path === undefined){
+      if (svgoConfig && !svgoConfig.path){
         svgoConfig.path = path;
         deletePath = true;
       }
