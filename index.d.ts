@@ -20,3 +20,8 @@ declare module '*.svg?raw' {
   const src: string
   export default src
 }
+
+declare module '*.svg?skipsvgo' {
+  const src: string
+  export default src
+}

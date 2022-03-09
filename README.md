@@ -54,6 +54,13 @@ import IconComponent from './my-icon.svg?component'
 // <IconComponent />
 ```
 
+### Skip SVGO Optimizer for a file
+SVGO can be explicitly disabled for one file by adding the `?skipsvgo` suffix:
+```js
+import iconWithoutOptimizer from './my-icon.svg?skipsvgo'
+// '/assets/my-icon.2d8efhg.svg'
+```
+
 ### Default import config
 When no explicit params are provided SVGs will be imported as Vue components by default.
 This can be changed using the `defaultImport` config setting,
