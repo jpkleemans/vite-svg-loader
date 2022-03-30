@@ -3,19 +3,13 @@ const { compileTemplate } = require('@vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
 
 module.exports = function svgLoader (options = {}) {
-  const { svgoConfig, svgo } = options
+  const { svgoConfig, svgo, defaultImport } = options
 
   const svgRegex = /\.svg(\?(raw|component))?$/
 
   return {
     name: 'svg-loader',
     enforce: 'pre',
-
-    resolveid (id) {
-      if (id.match(svgRegex)) {
-        return id
-      }
-    },
 
     async load (id) {
       if (!id.match(svgRegex)) {
@@ -24,9 +18,15 @@ module.exports = function svgLoader (options = {}) {
 
       const [path, query] = id.split('?', 2)
 
+      const importType = query || defaultImport
+
+      if (importType === 'url') {
+        return // Use default svg loader
+      }
+
       let svg = await fs.readFile(path, 'utf-8')
 
-      if (query === 'raw') {
+      if (importType === 'raw') {
         return `export default ${JSON.stringify(svg)}`
       }
 
