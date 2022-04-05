@@ -31,5 +31,9 @@ const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`))
     {{ testRaw }}
   </div>
 
+  <div id="root">
+    <img src="/root.svg" />
+  </div>
+
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
