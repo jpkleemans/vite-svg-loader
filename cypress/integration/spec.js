@@ -44,4 +44,12 @@ describe('Vite SVG Loader', () => {
   it('supports ?raw param', () => {
     cy.get('#raw').contains('<?xml version="1.0"?>')
   })
+
+  it('ignores root files references', () => {
+    cy.get('#root img')
+      .should('exist')
+      .and(($img) => {
+        expect($img[0].width).to.equal(355)
+      })
+  })
 })
