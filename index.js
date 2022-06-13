@@ -17,7 +17,9 @@ module.exports = function svgLoader (options = {}) {
     },
 
     async load (id) {
-      const isRootRef = viteConfig.command === 'build' && !id.startsWith(viteConfig.root)
+      const root = viteConfig.root;
+      const parentDir = root.slice(0,root.lastIndexOf('/'));
+      const isRootRef = viteConfig.command === 'build' && !id.startsWith(parentDir);
 
       if (!id.match(svgRegex) || isRootRef) {
         return
