@@ -5,19 +5,14 @@ const { optimize: optimizeSvg } = require('svgo')
 module.exports = function svgLoader (options = {}) {
   const { svgoConfig, svgo, defaultImport } = options
 
-  let viteConfig = {}
   const svgRegex = /\.svg(\?(raw|component))?$/
 
   return {
     name: 'svg-loader',
     enforce: 'pre',
 
-    configResolved (config) {
-      viteConfig = config
-    },
-
     async load (id) {
-      const isRootRef = viteConfig.command === 'build' && !id.startsWith(viteConfig.root)
+      const isRootRef = id.startsWith('/')
 
       if (!id.match(svgRegex) || isRootRef) {
         return
