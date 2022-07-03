@@ -57,8 +57,8 @@ import IconComponent from './my-icon.svg?component'
 ### Skip SVGO Optimizer for a file
 SVGO can be explicitly disabled for one file by adding the `?skipsvgo` suffix:
 ```js
-import iconWithoutOptimizer from './my-icon.svg?skipsvgo'
-// '/assets/my-icon.2d8efhg.svg'
+import IconWithoutOptimizer from './my-icon.svg?skipsvgo'
+// <IconWithoutOptimizer />
 ```
 
 ### Default import config

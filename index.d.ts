@@ -1,3 +1,5 @@
+import { FunctionalComponent, SVGAttributes } from 'vue'
+
 declare module 'vite-svg-loader' {
   import { Plugin } from 'vite'
   import { OptimizeOptions } from 'svgo'
@@ -6,7 +8,6 @@ declare module 'vite-svg-loader' {
 }
 
 declare module '*.svg?component' {
-  import { FunctionalComponent, SVGAttributes } from 'vue'
   const src: FunctionalComponent<SVGAttributes>
   export default src
 }
@@ -22,6 +23,6 @@ declare module '*.svg?raw' {
 }
 
 declare module '*.svg?skipsvgo' {
-  const src: string
+  const src: FunctionalComponent<SVGAttributes>
   export default src
 }
