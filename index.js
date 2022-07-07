@@ -1,6 +1,6 @@
 const fs = require('fs').promises
 const { compileTemplate } = require('@vue/compiler-sfc')
-const { optimize: optimizeSvg } = require('svgo')
+const { optimize } = require("svgo");
 
 module.exports = function svgLoader (options = {}) {
   const { svgoConfig, svgo, defaultImport } = options
@@ -37,7 +37,10 @@ module.exports = function svgLoader (options = {}) {
       }
 
       if (svgo !== false) {
-        svg = optimizeSvg(svg, svgoConfig).data
+        svg = optimize(svg, {
+          ...svgoConfig,
+          path,
+        }).data
       }
 
       const { code } = compileTemplate({
