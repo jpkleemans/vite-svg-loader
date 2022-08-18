@@ -29,7 +29,7 @@ module.exports = function svgLoader (options = {}) {
       try {
         svg = await fs.readFile(path, 'utf-8')
       } catch (ex) {
-        console.warn('File couldn\'t be loaded, fallback to default loader', id, ex)
+        console.warn('\n', `${id} couldn't be loaded by vite-svg-loader, fallback to default loader`)
         return
       }
 
