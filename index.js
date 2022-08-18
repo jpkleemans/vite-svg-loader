@@ -29,8 +29,8 @@ module.exports = function svgLoader (options = {}) {
       try {
         svg = await fs.readFile(path, 'utf-8')
       } catch (ex) {
-        console.log("File couldn't be loaded, fallback to default loader", id, ex)
-        return // File couldn't be loaded, fallback to default loader
+        console.warn('File couldn\'t be loaded, fallback to default loader', id, ex)
+        return
       }
 
       if (importType === 'raw') {
