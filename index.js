@@ -5,7 +5,7 @@ const { optimize: optimizeSvg } = require('svgo')
 module.exports = function svgLoader (options = {}) {
   const { svgoConfig, svgo, defaultImport } = options
 
-  const svgRegex = /\.svg(\?(raw|component))?$/
+  const svgRegex = /\.svg(\?(raw|component|skipsvgo))?$/
 
   return {
     name: 'svg-loader',
@@ -37,7 +37,7 @@ module.exports = function svgLoader (options = {}) {
         return `export default ${JSON.stringify(svg)}`
       }
 
-      if (svgo !== false) {
+      if (svgo !== false && query !== 'skipsvgo') {
         svg = optimizeSvg(svg, svgoConfig).data
       }
 
