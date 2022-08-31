@@ -1,8 +1,8 @@
+import { Plugin } from 'vite'
+import { OptimizeOptions } from 'svgo'
 import { FunctionalComponent, SVGAttributes } from 'vue'
 
 declare module 'vite-svg-loader' {
-  import { Plugin } from 'vite'
-  import { OptimizeOptions } from 'svgo'
   function svgLoader(options?: { svgoConfig?: OptimizeOptions, svgo?: boolean, defaultImport?: 'url' | 'raw' | 'component' }): Plugin
   export default svgLoader
 }
