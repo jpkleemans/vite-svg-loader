@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
             defaultImport: DEFAULT_IMPORT,
             svgoConfig: {
                 plugins: [
+                    'preset-default',
                     { name: 'prefixIds' },
                 ],
             }
