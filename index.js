@@ -5,7 +5,7 @@ const { optimize } = require('svgo')
 module.exports = function svgLoader (options = {}) {
   const { svgoConfig, svgo, defaultImport } = options
 
-  const svgRegex = /\.svg(\?(raw|component))?$/
+  const svgRegex = /\.svg(\?(raw|component|skipsvgo))?$/
 
   return {
     name: 'svg-loader',
@@ -29,14 +29,15 @@ module.exports = function svgLoader (options = {}) {
       try {
         svg = await fs.readFile(path, 'utf-8')
       } catch (ex) {
-        return // File couldn't be loaded, fallback to default loader
+        console.warn('\n', `${id} couldn't be loaded by vite-svg-loader, fallback to default loader`)
+        return
       }
 
       if (importType === 'raw') {
         return `export default ${JSON.stringify(svg)}`
       }
 
-      if (svgo !== false) {
+      if (svgo !== false && query !== 'skipsvgo') {
         svg = optimize(svg, {
           ...svgoConfig,
           path

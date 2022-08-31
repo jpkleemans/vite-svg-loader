@@ -45,6 +45,16 @@ describe('Vite SVG Loader', () => {
     cy.get('#raw').contains('<?xml version="1.0"?>')
   })
 
+  it('uses svgo', () => {
+    cy.get('#component svg')
+      .should('not.have.attr', 'id') // Should be stripped by svgo
+  })
+
+  it('supports ?skipsvgo param', () => {
+    cy.get('#skipsvgo svg')
+      .should('have.attr', 'id')
+  })
+
   it('ignores root files references', () => {
     cy.get('#root img')
       .should('exist')

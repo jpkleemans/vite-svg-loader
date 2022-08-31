@@ -84,6 +84,13 @@ svgLoader({
 })
 ```
 
+### Skip SVGO for a single file
+SVGO can be explicitly disabled for one file by adding the `?skipsvgo` suffix:
+```js
+import IconWithoutOptimizer from './my-icon.svg?skipsvgo'
+// <IconWithoutOptimizer />
+```
+
 ### Use with TypeScript
 If you use the loader in a Typescript project, you'll need to import your svg files with the `?component` param: `import MyIcon from './my-icon.svg?component'`.
 
