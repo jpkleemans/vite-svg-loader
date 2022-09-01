@@ -62,4 +62,8 @@ describe('Vite SVG Loader', () => {
         expect($img[0].width).to.equal(355)
       })
   })
+
+  it("it send path to svgo", () => {
+    cy.get("#component svg .test_svg__rectangle").should("exist");
+  });
 })

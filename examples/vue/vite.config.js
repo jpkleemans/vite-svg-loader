@@ -12,7 +12,18 @@ export default defineConfig(({ mode }) => {
   const DEFAULT_IMPORT = env.VITE_SVG_DEFAULT_IMPORT || env.npm_config_svg_default_import
 
   return {
-    plugins: [vue(), viteSvgLoader({ defaultImport: DEFAULT_IMPORT })],
+    plugins: [
+        vue(),
+        viteSvgLoader({
+            defaultImport: DEFAULT_IMPORT,
+            svgoConfig: {
+                plugins: [
+                    'preset-default',
+                    { name: 'prefixIds' },
+                ],
+            }
+        })
+    ],
 
     resolve: {
       alias: {
