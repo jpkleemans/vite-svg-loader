@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
         svgoConfig: {
           plugins: [
             'preset-default',
-            { name: 'prefixIds' }
+            { name: 'prefixIds' } // For testing svgo path
           ]
         }
       })
