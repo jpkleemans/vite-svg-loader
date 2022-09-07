@@ -63,7 +63,7 @@ describe('Vite SVG Loader', () => {
       })
   })
 
-  it("it send path to svgo", () => {
-    cy.get("#component svg .test_svg__rectangle").should("exist");
-  });
+  it('it send path to svgo', () => {
+    cy.get('#component svg .test_svg__rectangle').should('exist')
+  })
 })

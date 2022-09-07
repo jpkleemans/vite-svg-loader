@@ -13,16 +13,16 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
-        vue(),
-        viteSvgLoader({
-            defaultImport: DEFAULT_IMPORT,
-            svgoConfig: {
-                plugins: [
-                    'preset-default',
-                    { name: 'prefixIds' },
-                ],
-            }
-        })
+      vue(),
+      viteSvgLoader({
+        defaultImport: DEFAULT_IMPORT,
+        svgoConfig: {
+          plugins: [
+            'preset-default',
+            { name: 'prefixIds' }
+          ]
+        }
+      })
     ],
 
     resolve: {
