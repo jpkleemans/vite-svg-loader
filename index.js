@@ -1,6 +1,7 @@
 const fs = require('fs').promises
 const { compileTemplate } = require('@vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
+const { basename } = require('path')
 
 module.exports = function svgLoader (options = {}) {
   const { svgoConfig, svgo, defaultImport } = options
@@ -51,7 +52,14 @@ module.exports = function svgLoader (options = {}) {
         transformAssetUrls: false
       })
 
-      return `${code}\nexport default { render: render }`
+      const [, match] = basename(path).match(/(.*)\.svg$/)
+      const filename = match.replaceAll('"', '\\"')
+
+      return `${code}
+
+const component = { "${filename}": () => render() }["${filename}"]
+
+export default component`
     }
   }
 }
