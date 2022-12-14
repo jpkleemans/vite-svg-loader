@@ -11,7 +11,7 @@
   "types": "./index.d.ts",
   "dependencies": {
     "@vue/compiler-sfc": "^3.2.20",
-    "svgo": "^2.7.0"
+    "svgo": "^3.0.2"
   },
   "devDependencies": {
     "cypress": "^8.6.0",
