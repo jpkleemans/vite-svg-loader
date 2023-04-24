@@ -36,6 +36,10 @@ describe('Vite SVG Loader', () => {
         expect($svg[0].width.baseVal.value).to.equal(400)
       })
   })
+  it('keeps style tag in components', () => {
+    cy.get('#style-tag svg style')
+      .should('exist')
+  })
 
   it('supports ?url param', () => {
     cy.get('#url').contains(/^\/assets\/test\..+\.svg/)
