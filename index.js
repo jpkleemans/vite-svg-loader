@@ -12,10 +12,6 @@ module.exports = function svgLoader (options = {}) {
     enforce: 'pre',
 
     async load (id) {
-      if (!id.match(svgRegex)) {
-        return
-      }
-
       const [path, query] = id.split('?', 2)
 
       const importType = query || defaultImport
