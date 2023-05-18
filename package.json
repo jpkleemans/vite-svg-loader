@@ -10,8 +10,8 @@
   "main": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "@vue/compiler-sfc": "^3.2.20",
-    "svgo": "^3.0.2"
+    "svgo": "^3.0.2",
+    "vue": "3.3.3"
   },
   "devDependencies": {
     "cypress": "^8.6.0",
