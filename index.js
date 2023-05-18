@@ -2,8 +2,8 @@ const fs = require('fs').promises
 const { compileTemplate } = require('@vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
 
-module.exports = function svgLoader (options = {}) {
-  const { svgoConfig, svgo, defaultImport } = options
+module.exports = function svgLoader(options = {}) {
+  const { svgoConfig, svgo, defaultImport, componentParamAlias } = options
 
   const svgRegex = /\.svg(\?(raw|component|skipsvgo))?$/
 
@@ -11,7 +11,7 @@ module.exports = function svgLoader (options = {}) {
     name: 'svg-loader',
     enforce: 'pre',
 
-    async load (id) {
+    async load(id) {
       if (!id.match(svgRegex)) {
         return
       }
@@ -29,7 +29,10 @@ module.exports = function svgLoader (options = {}) {
       try {
         svg = await fs.readFile(path, 'utf-8')
       } catch (ex) {
-        console.warn('\n', `${id} couldn't be loaded by vite-svg-loader, fallback to default loader`)
+        console.warn(
+          '\n',
+          `${id} couldn't be loaded by vite-svg-loader, fallback to default loader`
+        )
         return
       }
 
@@ -40,22 +43,24 @@ module.exports = function svgLoader (options = {}) {
       if (svgo !== false && query !== 'skipsvgo') {
         svg = optimizeSvg(svg, {
           ...svgoConfig,
-          path
+          path,
         }).data
       }
 
       // To prevent compileTemplate from removing the style tag
-      svg = svg.replace(/<style/g, '<component is="style"').replace(/<\/style/g, '</component')
+      svg = svg
+        .replace(/<style/g, `<${componentParamAlias || 'component'} is="style"`)
+        .replace(/<\/style/g, `</${componentParamAlias || 'component'}`)
 
       const { code } = compileTemplate({
         id: JSON.stringify(id),
         source: svg,
         filename: path,
-        transformAssetUrls: false
+        transformAssetUrls: false,
       })
 
       return `${code}\nexport default { render: render }`
-    }
+    },
   }
 }
 
