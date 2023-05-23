@@ -1,7 +1,7 @@
 describe('Vite SVG Loader', () => {
   it('successfully loads test page', () => {
     cy.visit('/')
-    cy.contains('Hello Vue 3 + Vite')
+    cy.contains('Hello Vite SVG loader')
   })
 
   it('loads svg file', () => {
@@ -42,7 +42,7 @@ describe('Vite SVG Loader', () => {
   })
 
   it('supports ?url param', () => {
-    cy.get('#url').contains(/^\/assets\/test\..+\.svg/)
+    cy.get('#url').contains(/^\/assets\/test.*\.svg/)
   })
 
   it('supports ?raw param', () => {

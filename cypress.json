@@ -1,4 +1,7 @@
 {
-  "baseUrl": "http://localhost:5000",
-  "video": false
+  "baseUrl": "http://127.0.0.1:4173",
+  "video": false,
+  "pluginsFile": false,
+  "supportFile": false,
+  "screenshotOnRunFailure": false
 }
