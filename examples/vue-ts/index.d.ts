@@ -10,6 +10,12 @@ declare module '*.svg?component' {
   export default src
 }
 
+declare module '*.svg?inline' {
+  import { FunctionalComponent, SVGAttributes } from 'vue'
+  const src: FunctionalComponent<SVGAttributes>
+  export default src
+}
+
 declare module '*.svg?url' {
   const src: String
   export default src
