@@ -4,6 +4,7 @@ import { defineAsyncComponent } from "vue";
 
 import HelloWorld from "./components/HelloWorld.vue";
 import Test from "./assets/test.svg?component";
+import TestInline from "./assets/test.svg?inline";
 import testUrl from "./assets/test.svg?url";
 import testRaw from "./assets/test.svg?raw";
 
@@ -14,6 +15,10 @@ const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`));
 <template>
   <div id="component">
     <Test class="test-svg" />
+  </div>
+
+  <div id="component">
+    <TestInline class="test-svg" />
   </div>
 
   <div id="image">
