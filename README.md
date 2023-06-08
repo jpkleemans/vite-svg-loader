@@ -50,7 +50,7 @@ import iconRaw from './my-icon.svg?raw'
 ### Data
 SVGs can be imported as base64 data url using the `?data` suffix:
 ```js
-import iconData from './my-icon.svg?raw'
+import iconData from './my-icon.svg?data'
 // 'data:image/svg+xml;base64,P...2h913j1g18h98hr'
 ```
 
