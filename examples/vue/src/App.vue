@@ -8,6 +8,7 @@ import TestSkipSvgo from './assets/test.svg?skipsvgo'
 import StyleTagTest from './assets/style.svg?skipsvgo'
 import testUrl from './assets/test.svg?url'
 import testRaw from './assets/test.svg?raw'
+import testData from './assets/test.svg?data'
 
 const name = 'circle'
 const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`))
@@ -40,6 +41,10 @@ const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`))
 
   <div id="raw">
     {{ testRaw }}
+  </div>
+
+  <div id="data">
+    {{ testData }}
   </div>
 
   <div id="root">

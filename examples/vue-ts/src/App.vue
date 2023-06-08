@@ -6,6 +6,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 import Test from "./assets/test.svg?component";
 import testUrl from "./assets/test.svg?url";
 import testRaw from "./assets/test.svg?raw";
+import testData from "./assets/test.svg?data";
 
 const name = "circle";
 const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`));
@@ -30,6 +31,10 @@ const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`));
 
   <div id="raw">
     {{ testRaw }}
+  </div>
+
+  <div id="data">
+    {{ testData }}
   </div>
 
   <HelloWorld msg="Hello Vue 3 + Vite" />

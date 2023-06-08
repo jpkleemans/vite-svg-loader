@@ -7,6 +7,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import Test from './assets/test.svg?component'
 import testUrl from './assets/test.svg?url'
 import testRaw from './assets/test.svg?raw'
+import testData from './assets/test.svg?data'
 
 // variables are not supported in dynamic imports
 // because https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars
@@ -33,6 +34,10 @@ const Async = defineAsyncComponent(() => import(`./assets/circle.svg?component`)
 
   <div id="raw">
     {{ testRaw }}
+  </div>
+
+  <div id="data">
+    {{ testData }}
   </div>
 
   <div id="root">

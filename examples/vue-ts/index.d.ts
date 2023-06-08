@@ -19,3 +19,8 @@ declare module '*.svg?raw' {
   const src: String
   export default src
 }
+
+declare module '*.svg?data' {
+  const src: String
+  export default src
+}
