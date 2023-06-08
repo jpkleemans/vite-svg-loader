@@ -49,6 +49,10 @@ describe('Vite SVG Loader', () => {
     cy.get('#raw').contains('<?xml version="1.0"?>')
   })
 
+  it('supports ?data param', () => {
+    cy.get('#data').contains('data:image/svg+xml;base64,')
+  })
+
   it('uses svgo', () => {
     cy.get('#component svg')
       .should('not.have.attr', 'id') // Should be stripped by svgo

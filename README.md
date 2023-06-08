@@ -47,6 +47,13 @@ import iconRaw from './my-icon.svg?raw'
 // '<?xml version="1.0"?>...'
 ```
 
+### Data
+SVGs can be imported as base64 data url using the `?data` suffix:
+```js
+import iconData from './my-icon.svg?raw'
+// 'data:image/svg+xml;base64,P...2h913j1g18h98hr'
+```
+
 ### Component
 SVGs can be explicitly imported as Vue components using the `?component` suffix:
 ```js

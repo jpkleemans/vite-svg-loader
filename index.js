@@ -5,7 +5,7 @@ const { optimize: optimizeSvg } = require('svgo')
 module.exports = function svgLoader (options = {}) {
   const { svgoConfig, svgo, defaultImport } = options
 
-  const svgRegex = /\.svg(\?(raw|component|skipsvgo))?$/
+  const svgRegex = /\.svg(\?(raw|data|component|skipsvgo))?$/
 
   return {
     name: 'svg-loader',
@@ -35,6 +35,15 @@ module.exports = function svgLoader (options = {}) {
 
       if (importType === 'raw') {
         return `export default ${JSON.stringify(svg)}`
+      }
+
+      if (importType === 'data') {
+        svg = svg
+          .replace(/\n/g, "")
+          .replace(/\r/g, "")
+          .replace(/"/g, "'");
+
+        return `export default 'data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}'`
       }
 
       if (svgo !== false && query !== 'skipsvgo') {
