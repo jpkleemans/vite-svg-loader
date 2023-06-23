@@ -20,10 +20,6 @@ module.exports = function svgLoader (options = {}) {
 
       const importType = query || defaultImport
 
-      if (importType === 'url') {
-        return // Use default svg loader
-      }
-
       let svg
 
       try {
