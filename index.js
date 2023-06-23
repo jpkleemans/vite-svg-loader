@@ -12,7 +12,7 @@ module.exports = function svgLoader (options = {}) {
     enforce: 'pre',
 
     async load (id) {
-      if (!id.match(svgRegex)) {
+      if (!id.match(svgRegex) || defaultImport === 'url') {
         return
       }
 
