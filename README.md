@@ -76,7 +76,7 @@ svgLoader({
 })
 ```
 
-By default, SVGO does not preserve the viewBox attribute for optimization reasons. This can cause issues when you need to resize your SVG with CSS. You can pass options to `svgLoader()` to disable the removal of the `viewBox` attribute.
+By default, SVGO does not preserve the `viewBox` attribute for optimization reasons. This can cause issues when you need to resize your SVG with CSS. You can pass options to `svgLoader()` to disable the removal of the `viewBox` attribute.
 
 ```js
 svgLoader({
