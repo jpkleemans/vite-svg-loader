@@ -92,10 +92,9 @@ import IconWithoutOptimizer from './my-icon.svg?skipsvgo'
 ```
 
 ### Use with TypeScript
-If you use the loader in a Typescript project, you'll need to import your svg files with the `?component` param: `import MyIcon from './my-icon.svg?component'`.
-
-You'll also need to reference the type definitions:
+If you use the loader in a Typescript project, you'll need to reference the type definitions inside `vite-env.d.ts`:
 ```ts
+/// <reference types="vite/client" />
 /// <reference types="vite-svg-loader" />
 ```
 
