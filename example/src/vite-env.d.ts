@@ -1,2 +1,2 @@
 /// <reference types="vite/client" />
-/// <reference types="../../" />
+/// <reference types="vite-svg-loader" />
