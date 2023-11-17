@@ -17,8 +17,7 @@
     "standard": "^16.0.3"
   },
   "peerDependencies": {
-    "vue": ">=3.2.13",
-    "vite": ">=5"
+    "vue": ">=3.2.13"
   },
   "scripts": {
     "lint": "standard --fix",
