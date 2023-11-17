@@ -23,7 +23,7 @@
     "lint": "standard --fix",
     "cypress": "cypress run",
     "example:build": "cd ./example && npm ci && npm run build",
-    "example:preview": "cd ./example && npm run preview"
+    "example:preview": "cd ./example && npm run preview -- --host"
   },
   "repository": {
     "type": "git",
