@@ -1,14 +1,14 @@
 name: End-to-end tests
-on: [push, pull_request]
+on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Cypress run
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         with:
           build: npm run example:build
           start: npm run example:preview
