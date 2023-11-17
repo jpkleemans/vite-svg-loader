@@ -37,7 +37,7 @@ export default defineConfig({
 SVGs can be imported as URLs using the `?url` suffix:
 ```js
 import iconUrl from './my-icon.svg?url'
-// '/assets/my-icon.2d8efhg.svg'
+// 'data:image/svg+xml...'
 ```
 
 ### Raw
