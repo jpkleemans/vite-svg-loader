@@ -12,6 +12,5 @@ jobs:
         with:
           build: npm run example:build
           start: npm run example:preview
-          wait-on: http://localhost:4173
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
