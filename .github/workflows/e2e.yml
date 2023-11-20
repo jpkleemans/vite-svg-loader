@@ -16,6 +16,8 @@ jobs:
           cd test-app
           npm install
           npm install vite-svg-loader --save-dev
-          npm run build
-          npm run preview
       - uses: cypress-io/github-action@v6
+        with:
+          working-directory: test-app
+          build: npm run example:build
+          start: npm run example:preview
