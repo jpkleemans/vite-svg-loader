@@ -19,5 +19,5 @@ jobs:
       - uses: cypress-io/github-action@v6
         with:
           working-directory: test-app
-          build: npm run example:build
-          start: npm run example:preview
+          build: npm run build
+          start: npm run preview
