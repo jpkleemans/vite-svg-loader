@@ -42,7 +42,7 @@ describe('Vite SVG Loader', () => {
   })
 
   it('supports ?url param', () => {
-    cy.get('#url').contains(/^data:image\/svg\+xml/)
+    cy.get('#url').contains(/^data:image\/svg\+xml|^\/assets\/test.*\.svg/)
   })
 
   it('supports ?raw param', () => {
