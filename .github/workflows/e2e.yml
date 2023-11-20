@@ -1,7 +1,7 @@
 name: End-to-end tests
 on: [push]
 jobs:
-  vite-cli:
+  vite-latest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,14 +32,14 @@ jobs:
         with:
           start: npm run test:preview
 
-  vue-cli:
+  vite-4:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install vue-ts
-        run: npm create vue@latest test-app -- --default --ts
+        run: npm create vite@4 test-app -- --template vue-ts
 
       - name: Add example code
         run: | 
