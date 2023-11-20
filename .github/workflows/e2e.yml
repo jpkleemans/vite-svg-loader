@@ -6,13 +6,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm create vite@latest test-app -- --template vue-ts
-      - run: mv ./example/src/App.vue ./test-app/src/App.vue
-      - run: mv ./example/vite.config.ts ./test-app/vite.config.ts
-      - run: mv ./example/src/assets ./test-app/src/assets
-      - run: mv ./example/public ./test-app/public
-      - run: cd test-app
-      - run: npm install
-      - run: npm install vite-svg-loader --save-dev
-      - run: npm build
-      - run: npm preview
+      - run: | 
+          mv ./example/src/App.vue ./test-app/src/App.vue
+          mv ./example/vite.config.ts ./test-app/vite.config.ts
+          mv ./example/src/assets ./test-app/src/assets
+          mv ./example/public ./test-app/public
+      - run: | 
+          cd test-app
+          npm install
+          npm install vite-svg-loader --save-dev
+          npm build
+          npm preview
       - uses: cypress-io/github-action@v6
