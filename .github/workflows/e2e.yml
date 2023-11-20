@@ -9,6 +9,7 @@ jobs:
       - run: | 
           mv ./example/src/App.vue ./test-app/src/App.vue
           mv ./example/vite.config.ts ./test-app/vite.config.ts
+          mv ./example/src/vite-env.d.ts ./test-app/src/vite-env.d.ts
           mv ./example/src/assets ./test-app/src/assets
           mv ./example/public ./test-app/public
       - run: | 
