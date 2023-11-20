@@ -8,6 +8,37 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install vue-ts
+        run: npm create vite@latest test-app -- --template vue
+
+      - name: Add example code
+        run: | 
+          mv ./example/src/App.vue ./test-app/src/App.vue
+          mv ./example/vite.config.ts ./test-app/vite.config.ts
+          mv ./example/src/vite-env.d.ts ./test-app/src/vite-env.d.ts
+          mv ./example/src/assets/test.svg ./test-app/src/assets/test.svg
+          mv ./example/src/assets/style.svg ./test-app/src/assets/style.svg
+          mv ./example/src/assets/circle.svg ./test-app/src/assets/circle.svg
+          mv ./example/public/root.svg ./test-app/public/root.svg
+
+      - name: Build
+        run: | 
+          cd test-app
+          npm install
+          npm install vite-svg-loader --save-dev
+          npm run build
+
+      - name: Test
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run test:preview
+
+  vite-latest-ts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install vue-ts
         run: npm create vite@latest test-app -- --template vue-ts
 
       - name: Add example code
@@ -33,6 +64,37 @@ jobs:
           start: npm run test:preview
 
   vite-4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install vue-ts
+        run: npm create vite@4 test-app -- --template vue
+
+      - name: Add example code
+        run: | 
+          mv ./example/src/App.vue ./test-app/src/App.vue
+          mv ./example/vite.config.ts ./test-app/vite.config.ts
+          mv ./example/src/vite-env.d.ts ./test-app/src/vite-env.d.ts
+          mv ./example/src/assets/test.svg ./test-app/src/assets/test.svg
+          mv ./example/src/assets/style.svg ./test-app/src/assets/style.svg
+          mv ./example/src/assets/circle.svg ./test-app/src/assets/circle.svg
+          mv ./example/public/root.svg ./test-app/public/root.svg
+
+      - name: Build
+        run: | 
+          cd test-app
+          npm install
+          npm install vite-svg-loader --save-dev
+          npm run build
+
+      - name: Test
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run test:preview
+
+  vite-4-ts:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
