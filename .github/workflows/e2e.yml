@@ -1,16 +1,18 @@
 name: End-to-end tests
 on: [push]
 jobs:
-  cypress-run:
+  vite-cli:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          build: npm run example:build
-          start: npm run example:preview
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      - uses: actions/checkout@v4
+      - run: npm create vite@latest test-app -- --template vue-ts
+      - run: mv ./example/App.vue ./test-app/App.vue
+      - run: mv ./example/vite.config.ts ./test-app/vite.config.ts
+      - run: mv ./example/assets ./test-app/assets
+      - run: mv ./example/public ./test-app/public
+      - run: cd test-app
+      - run: npm install
+      - run: npm install vite-svg-loader --save-dev
+      - run: npm build
+      - run: npm preview
+      - uses: cypress-io/github-action@v6
