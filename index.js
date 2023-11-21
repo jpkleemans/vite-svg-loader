@@ -1,5 +1,5 @@
 const fs = require('fs').promises
-const { compileTemplate } = require('vue/compiler-sfc')
+const { compileTemplate } = require('@vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
 const _debug = require('debug')
 
@@ -37,15 +37,15 @@ module.exports = function svgLoader (options = {}) {
         return
       }
 
-      if (importType === 'raw') {
-        return `export default ${JSON.stringify(svg)}`
-      }
-
       if (svgo !== false && query !== 'skipsvgo') {
         svg = optimizeSvg(svg, {
           ...svgoConfig,
           path
         }).data
+      }
+
+      if (importType === 'raw') {
+        return `export default ${JSON.stringify(svg)}`
       }
 
       // To prevent compileTemplate from removing the style tag
