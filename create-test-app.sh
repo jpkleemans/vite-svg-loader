@@ -2,7 +2,7 @@
 
 $1 # Install vue command, project name should be `test-app`
 
-# Copy example code and svg's
+# Copy example code and SVGs
 cp ./example/src/App.vue ./test-app/src/App.vue
 cp ./example/vite.config.ts ./test-app/vite.config.js
 cp ./example/src/assets/test.svg ./test-app/src/assets/test.svg
