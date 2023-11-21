@@ -3,6 +3,7 @@
   "version": "5.1.0",
   "description": "Vite plugin to load SVG files as Vue components",
   "keywords": [
+    "vite-plugin",
     "vite",
     "vue",
     "svg"
