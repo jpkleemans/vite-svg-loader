@@ -10,9 +10,10 @@ cp ./example/src/assets/style.svg ./test-app/src/assets/style.svg
 cp ./example/src/assets/circle.svg ./test-app/src/assets/circle.svg
 cp ./example/public/root.svg ./test-app/public/root.svg
 
-# Remove `lang="ts"` from `<script>`` if project is not using typescript
+# TypeScript only commands
 if [[ "$2" != "--typescript" ]]; then
-    sed -i 's/ lang="ts"//' ./test-app/src/App.vue
+    sed -i 's/ lang="ts"//' ./test-app/src/App.vue # Remove `lang="ts"` from `<script>`
+    cp ./example/src/vite-env.d.ts ./test-app/src/vite-env.d.ts
 fi
 
 # Install and build app
