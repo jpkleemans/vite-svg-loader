@@ -1,6 +1,9 @@
 const fs = require('fs').promises
 const { compileTemplate } = require('vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
+const _debug = require('debug')
+
+const debug = _debug('vite-svg-loader')
 
 module.exports = function svgLoader (options = {}) {
   const { svgoConfig, svgo, defaultImport } = options
@@ -29,7 +32,8 @@ module.exports = function svgLoader (options = {}) {
       try {
         svg = await fs.readFile(path, 'utf-8')
       } catch (ex) {
-        console.warn('\n', `${id} couldn't be loaded by vite-svg-loader, fallback to default loader`)
+        debug('\n', `${id} couldn't be loaded by vite-svg-loader, fallback to default loader`)
+
         return
       }
 
