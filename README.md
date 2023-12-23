@@ -102,7 +102,7 @@ export default defineNuxtConfig({
 })
 ```
 
-Or you can use `nuxt-svgo-loader`, which integrates `vite-svg-loader` and also uses Nuxt Devtools to enhance the development experience and help you find the SVG files you want in your project.
+Or you can use [`nuxt-svgo-loader`](https://github.com/Mini-ghost/nuxt-svgo-loader), which integrates `vite-svg-loader` and also uses Nuxt Devtools to enhance the development experience and help you find the SVG files you want in your project.
 
 ### Use with TypeScript
 If you use the loader in a Typescript project, you'll need to reference the type definitions inside `vite-env.d.ts`:
