@@ -91,6 +91,19 @@ import IconWithoutOptimizer from './my-icon.svg?skipsvgo'
 // <IconWithoutOptimizer />
 ```
 
+### Use with Nuxt
+Using `vite-svg-loader` with Nuxt is easy, we just need to set the following in `nuxt.config.js`.
+
+```js
+export default defineNuxtConfig({
+  vite: {
+    plugins: [svgLoader()]
+  }
+})
+```
+
+Or you can use [`nuxt-svgo-loader`](https://github.com/Mini-ghost/nuxt-svgo-loader), which integrates `vite-svg-loader` and also uses Nuxt Devtools to enhance the development experience and help you find the SVG files you want in your project.
+
 ### Use with TypeScript
 If you use the loader in a Typescript project, you'll need to reference the type definitions inside `vite-env.d.ts`:
 ```ts
