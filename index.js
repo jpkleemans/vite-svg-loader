@@ -1,5 +1,5 @@
 const fs = require('fs').promises
-const { compileTemplate } = require('@vue/compiler-sfc')
+const { compileTemplate } = require('vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
 
 module.exports = function svgLoader (options = {}) {
