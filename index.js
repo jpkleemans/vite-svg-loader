@@ -15,7 +15,7 @@ module.exports = function svgLoader (options = {}) {
     enforce: 'pre',
 
     async load (id) {
-      if (!id.match(svgRegex)) {
+      if (id.startsWith("virtual:") || !id.match(svgRegex)) {
         return
       }
 
