@@ -1,14 +1,14 @@
 const fs = require('fs').promises
 const { compileTemplate } = require('vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
-const _debug = require('debug')
+const debug = require('debug')
 
-const debug = _debug('vite-svg-loader')
+const knownImportTypes = new Set(['component', 'skipsvgo', 'raw', 'url'])
 
 module.exports = function svgLoader (options = {}) {
   const { svgoConfig, svgo, defaultImport } = options
 
-  const svgRegex = /\.svg(\?(raw|component|skipsvgo))?$/
+  const svgRegex = /\.svg(\?.*)?$/
 
   return {
     name: 'svg-loader',
@@ -20,8 +20,15 @@ module.exports = function svgLoader (options = {}) {
       }
 
       const [path, query] = id.split('?', 2)
+      const importParams = new URLSearchParams(query)
 
-      const importType = query || defaultImport
+      let importType = defaultImport
+      for (const key of importParams.keys()) {
+        if (knownImportTypes.has(key)) {
+          importType = key
+          break
+        }
+      }
 
       if (importType === 'url') {
         return // Use default svg loader
