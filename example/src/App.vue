@@ -21,6 +21,10 @@ const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`))
     <img src="./assets/test.svg?url">
   </div>
 
+  <div id="additional-params">
+    <img src="./assets/test.svg?url&lang.svg">
+  </div>
+
   <div id="async">
     <Async />
   </div>

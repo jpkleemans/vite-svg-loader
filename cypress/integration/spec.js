@@ -29,6 +29,14 @@ describe('Vite SVG Loader', () => {
       })
   })
 
+  it('loads svg file via <img> even if additional query parameters are added e.g. via importGlobRestoreExtension, see https://github.com/vitejs/vite/discussions/13810', () => {
+    cy.get('#additional-params img')
+      .should('exist')
+      .and(($img) => {
+        expect($img[0].naturalWidth).to.equal(467)
+      })
+  })
+
   it('supports async components', () => {
     cy.get('#async svg')
       .should('exist')
