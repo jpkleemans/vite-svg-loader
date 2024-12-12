@@ -1,8 +1,9 @@
 const fs = require('fs').promises
 const { compileTemplate } = require('vue/compiler-sfc')
 const { optimize: optimizeSvg } = require('svgo')
-const debug = require('debug')
+const _debug = require('debug')
 
+const debug = _debug('vite-svg-loader')
 const knownImportTypes = new Set(['component', 'skipsvgo', 'raw', 'url'])
 
 module.exports = function svgLoader (options = {}) {
