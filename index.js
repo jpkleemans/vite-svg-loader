@@ -51,6 +51,15 @@ module.exports = function svgLoader (options = {}) {
       // To prevent compileTemplate from removing the style tag
       svg = svg.replace(/<style/g, '<component is="style"').replace(/<\/style/g, '</component')
 
+      let defaultTitle = 'undefined'
+      const titleMatch = svg.match(/<title[^>]*>([\s\S]*?)<\/title>/i)
+      if (titleMatch) {
+        defaultTitle = JSON.stringify(titleMatch[1].trim())
+        svg = svg.replace(/<title([^>]*)>[\s\S]*?<\/title>/i, (_, attrs) => `<title${attrs} v-if="title">{{ title }}</title>`)
+      } else {
+        svg = svg.replace(/<svg\b([^>]*)>/i, m => `${m}<title v-if="title">{{ title }}</title>`)
+      }
+
       const { code, map } = compileTemplate({
         id: JSON.stringify(id),
         source: svg,
@@ -59,7 +68,7 @@ module.exports = function svgLoader (options = {}) {
       })
 
       return {
-        code: `${code}\nexport default { render }`,
+        code: `${code}\nexport default { render, props: { title: { type: String, default: ${defaultTitle} } } }`,
         map
       }
     }
