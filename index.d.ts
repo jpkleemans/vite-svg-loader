@@ -6,12 +6,12 @@ declare module 'vite-svg-loader' {
 }
 
 declare module '*.svg?component' {
-  import { FunctionalComponent, SVGAttributes } from 'vue'
+  import { DefineComponent, SVGAttributes } from 'vue'
   interface SVGComponentProps extends SVGAttributes {
     title?: string
   }
-  const src: FunctionalComponent<SVGComponentProps>
-  export default src
+  const component: DefineComponent<SVGComponentProps>
+  export default component
 }
 
 declare module '*.svg?url' {
@@ -20,15 +20,15 @@ declare module '*.svg?url' {
 }
 
 declare module '*.svg?raw' {
-  const src: string
-  export default src
+  const svg: string
+  export default svg
 }
 
 declare module '*.svg?skipsvgo' {
-  import { FunctionalComponent, SVGAttributes } from 'vue'
+  import { DefineComponent, SVGAttributes } from 'vue'
   interface SVGComponentProps extends SVGAttributes {
     title?: string
   }
-  const src: FunctionalComponent<SVGComponentProps>
-  export default src
+  const component: DefineComponent<SVGComponentProps>
+  export default component
 }
