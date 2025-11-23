@@ -11,12 +11,12 @@
   "main": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "debug": "^4.3.4",
-    "svgo": "^3.0.2"
+    "debug": "^4.4.3",
+    "svgo": "^4.0.0"
   },
   "devDependencies": {
-    "cypress": "^8.6.0",
-    "standard": "^16.0.3"
+    "cypress": "^15.7.0",
+    "standard": "^17.1.2"
   },
   "peerDependencies": {
     "vue": ">=3.2.13"
