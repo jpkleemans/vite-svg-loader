@@ -21,26 +21,6 @@ jobs:
         with:
           start: npm run test:preview
 
-  vite-cli-4:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - run: npm install
-      - run: ./create-test-app.sh "npm create vite@4 test-app -- --template vue"
-      - uses: cypress-io/github-action@v6
-        with:
-          start: npm run test:preview
-
-  vite-cli-4-ts:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - run: npm install
-      - run: ./create-test-app.sh "npm create vite@4 test-app -- --template vue-ts" --typescript
-      - uses: cypress-io/github-action@v6
-        with:
-          start: npm run test:preview
-
   vue-cli-latest:
     runs-on: ubuntu-latest
     steps:
