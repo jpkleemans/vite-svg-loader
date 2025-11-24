@@ -20,5 +20,5 @@ fi
 # Install and build app
 cd ./test-app
 npm install
-npm install vite-svg-loader --save-dev
+npm install ../ --save-dev
 npm run build

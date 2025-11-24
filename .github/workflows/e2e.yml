@@ -4,7 +4,8 @@ jobs:
   vite-cli-latest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - run: npm install
       - run: ./create-test-app.sh "npm create vite@latest test-app -- --template vue"
       - uses: cypress-io/github-action@v6
         with:
@@ -13,7 +14,8 @@ jobs:
   vite-cli-latest-ts:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - run: npm install
       - run: ./create-test-app.sh "npm create vite@latest test-app -- --template vue-ts" --typescript
       - uses: cypress-io/github-action@v6
         with:
@@ -22,7 +24,8 @@ jobs:
   vite-cli-4:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - run: npm install
       - run: ./create-test-app.sh "npm create vite@4 test-app -- --template vue"
       - uses: cypress-io/github-action@v6
         with:
@@ -31,7 +34,8 @@ jobs:
   vite-cli-4-ts:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - run: npm install
       - run: ./create-test-app.sh "npm create vite@4 test-app -- --template vue-ts" --typescript
       - uses: cypress-io/github-action@v6
         with:
@@ -40,7 +44,8 @@ jobs:
   vue-cli-latest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - run: npm install
       - run: ./create-test-app.sh "npm create vue@latest test-app -- --default"
       - uses: cypress-io/github-action@v6
         with:
@@ -49,7 +54,8 @@ jobs:
   vue-cli-latest-ts:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - run: npm install
       - run: ./create-test-app.sh "npm create vue@latest test-app -- --default --ts" --typescript
       - uses: cypress-io/github-action@v6
         with:

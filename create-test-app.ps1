@@ -24,5 +24,5 @@ if ($args[1] -ne "--typescript") {
 # Install and build app
 Set-Location ./test-app
 npm install
-npm install vite-svg-loader --save-dev
+npm install ../ --save-dev
 npm run build
