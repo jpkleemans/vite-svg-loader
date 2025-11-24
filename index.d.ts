@@ -1,16 +1,17 @@
 declare module 'vite-svg-loader' {
-  import { Plugin } from 'vite'
-  import { Config } from 'svgo'
+  import type { Plugin } from 'vite'
+  import type { Config } from 'svgo'
   function svgLoader(options?: { svgoConfig?: Config, svgo?: boolean, defaultImport?: 'url' | 'raw' | 'component' }): Plugin
   export default svgLoader
 }
 
 declare module '*.svg?component' {
-  import { DefineComponent, SVGAttributes } from 'vue'
+  import type { defineComponent, SVGAttributes } from 'vue'
+  export const render: Function
   interface SVGComponentProps extends SVGAttributes {
     title?: string
   }
-  const component: DefineComponent<SVGComponentProps>
+  const component: ReturnType<typeof defineComponent<SVGComponentProps>>
   export default component
 }
 
@@ -25,10 +26,11 @@ declare module '*.svg?raw' {
 }
 
 declare module '*.svg?skipsvgo' {
-  import { DefineComponent, SVGAttributes } from 'vue'
+  import type { defineComponent, SVGAttributes } from 'vue'
+  export const render: Function
   interface SVGComponentProps extends SVGAttributes {
     title?: string
   }
-  const component: DefineComponent<SVGComponentProps>
+  const component: ReturnType<typeof defineComponent<SVGComponentProps>>
   export default component
 }
