@@ -1,4 +1,4 @@
-if ($args[0] -ne $null) {
+if ($null -ne $args[0]) {
     Invoke-Expression $args[0] # Install vue command, project name should be `test-app`
 }
 

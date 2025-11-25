@@ -8,7 +8,7 @@ Vite plugin to load SVG files as Vue components, using SVGO for optimization.
 
 ```vue
 <template>
-  <MyIcon />
+  <MyIcon title="My Icon" />
 </template>
 
 <script setup>
@@ -52,6 +52,12 @@ SVGs can be explicitly imported as Vue components using the `?component` suffix:
 ```js
 import IconComponent from './my-icon.svg?component'
 // <IconComponent />
+```
+
+#### SVG Title
+SVG title can be set using the `title` prop on the component:
+```html
+<IconComponent title="Icon Component" />
 ```
 
 ### Default import config
