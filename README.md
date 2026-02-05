@@ -75,6 +75,27 @@ svgLoader({
 })
 ```
 
+By default, SVGO does not preserve the `viewBox` attribute for optimization reasons. This can cause issues when you need to resize your SVG with CSS. You can pass options to `svgLoader()` to disable the removal of the `viewBox` attribute.
+
+```js
+svgLoader({
+  svgoConfig: {
+    multipass: true,
+    plugins: [
+      {
+        name: 'preset-default',
+        params: {
+          overrides: {
+            // @see https://github.com/svg/svgo/issues/1128
+            removeViewBox: false,
+          },
+        },
+      },
+    ],
+  },
+}),
+```
+
 ### Disable SVGO
 #### `vite.config.js`
 ```js
