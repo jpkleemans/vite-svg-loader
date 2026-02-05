@@ -1,5 +1,7 @@
 name: End-to-end tests
+
 on: [push]
+
 jobs:
   vite-cli-latest:
     runs-on: ubuntu-latest
@@ -15,24 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: ./create-test-app.sh "npm create vite@latest test-app -- --template vue-ts" --typescript
-      - uses: cypress-io/github-action@v6
-        with:
-          start: npm run test:preview
-
-  vite-cli-8:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: ./create-test-app.sh "npm create vite@8 test-app -- --template vue"
-      - uses: cypress-io/github-action@v6
-        with:
-          start: npm run test:preview
-
-  vite-cli-8-ts:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: ./create-test-app.sh "npm create vite@8 test-app -- --template vue-ts" --typescript
       - uses: cypress-io/github-action@v6
         with:
           start: npm run test:preview
