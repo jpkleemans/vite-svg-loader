@@ -10,6 +10,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
+      - run: npm ci
       - run: ./create-test-app.sh "npm create vite@latest test-app -- --template vue"
       - run: npx playwright install --with-deps chromium
       - run: npm run test:preview &
@@ -22,6 +23,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
+      - run: npm ci
       - run: ./create-test-app.sh "npm create vite@latest test-app -- --template vue-ts" --typescript
       - run: npx playwright install --with-deps chromium
       - run: npm run test:preview &
@@ -34,6 +36,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
+      - run: npm ci
       - run: ./create-test-app.sh "npm create vue@latest test-app -- --default"
       - run: npx playwright install --with-deps chromium
       - run: npm run test:preview &
@@ -46,6 +49,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
+      - run: npm ci
       - run: ./create-test-app.sh "npm create vue@latest test-app -- --default --ts" --typescript
       - run: npx playwright install --with-deps chromium
       - run: npm run test:preview &
