@@ -6,35 +6,51 @@ jobs:
   vite-cli-latest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: ./create-test-app.sh "npm create vite@latest test-app -- --template vue"
-      - uses: cypress-io/github-action@v6
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          start: npm run test:preview
+          node-version: lts/*
+      - run: npm ci
+      - run: ./create-test-app.sh "npm create vite@latest test-app -- --template vue"
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:preview &
+      - run: npx wait-on http://localhost:4173 && npm test
 
   vite-cli-latest-ts:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: ./create-test-app.sh "npm create vite@latest test-app -- --template vue-ts" --typescript
-      - uses: cypress-io/github-action@v6
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          start: npm run test:preview
+          node-version: lts/*
+      - run: npm ci
+      - run: ./create-test-app.sh "npm create vite@latest test-app -- --template vue-ts" --typescript
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:preview &
+      - run: npx wait-on http://localhost:4173 && npm test
 
   vue-cli-latest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: ./create-test-app.sh "npm create vue@latest test-app -- --default"
-      - uses: cypress-io/github-action@v6
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          start: npm run test:preview
+          node-version: lts/*
+      - run: npm ci
+      - run: ./create-test-app.sh "npm create vue@latest test-app -- --default"
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:preview &
+      - run: npx wait-on http://localhost:4173 && npm test
 
   vue-cli-latest-ts:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: ./create-test-app.sh "npm create vue@latest test-app -- --default --ts" --typescript
-      - uses: cypress-io/github-action@v6
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          start: npm run test:preview
+          node-version: lts/*
+      - run: npm ci
+      - run: ./create-test-app.sh "npm create vue@latest test-app -- --default --ts" --typescript
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:preview &
+      - run: npx wait-on http://localhost:4173 && npm test
