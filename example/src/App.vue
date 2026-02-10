@@ -18,19 +18,19 @@ const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`))
   </div>
 
   <div id="image">
-    <img src="./assets/test.svg?url">
+    <img title="Image" src="./assets/test.svg?url">
   </div>
 
   <div id="async">
-    <Async />
+    <Async title="Async" />
   </div>
 
   <div id="skipsvgo">
-    <TestSkipSvgo />
+    <TestSkipSvgo title="Skip SVGO" />
   </div>
 
   <div id="style-tag">
-    <StyleTagTest />
+    <StyleTagTest title="Style Tag Test" />
   </div>
 
   <div id="url">
