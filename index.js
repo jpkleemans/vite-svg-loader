@@ -51,14 +51,17 @@ module.exports = function svgLoader (options = {}) {
       // To prevent compileTemplate from removing the style tag
       svg = svg.replace(/<style/g, '<component is="style"').replace(/<\/style/g, '</component')
 
-      const { code } = compileTemplate({
+      const { code, map } = compileTemplate({
         id: JSON.stringify(id),
         source: svg,
-        filename: path,
+        filename: id,
         transformAssetUrls: false
       })
 
-      return `${code}\nexport default { render: render }`
+      return {
+        code: `${code}\nexport default { render }`,
+        map
+      }
     }
   }
 }
