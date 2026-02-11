@@ -70,4 +70,14 @@ describe('Vite SVG Loader', () => {
   it('it send path to svgo', () => {
     cy.get('#component svg .test_svg__rectangle').should('exist')
   })
+
+  it('renders slot content inside svg element', () => {
+    cy.get('#with-slot svg')
+      .should('exist')
+      .within(() => {
+        cy.get('rect').should('exist')
+        cy.get('title').contains('Custom SVG Title')
+        cy.get('desc').contains('Custom SVG Description')
+      })
+  })
 })
