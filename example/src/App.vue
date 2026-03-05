@@ -45,5 +45,12 @@ const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`))
     <img src="/root.svg" />
   </div>
 
+  <div id="with-slot">
+    <Test>
+      <title>Custom SVG Title</title>
+      <desc>Custom SVG Description</desc>
+    </Test>
+  </div>
+
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>

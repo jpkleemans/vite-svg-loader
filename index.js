@@ -51,6 +51,9 @@ module.exports = function svgLoader (options = {}) {
       // To prevent compileTemplate from removing the style tag
       svg = svg.replace(/<style/g, '<component is="style"').replace(/<\/style/g, '</component')
 
+      // Insert <slot /> inside the svg element
+      svg = svg.replace(/<\/svg>/, '<slot /></svg>')
+
       const { code } = compileTemplate({
         id: JSON.stringify(id),
         source: svg,

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Install dependencies of parent package first
+npm ci
+
 $1 # Install vue command, project name should be `test-app`
 
 # Copy example code and SVGs
@@ -20,5 +23,5 @@ fi
 # Install and build app
 cd ./test-app
 npm install
-npm install vite-svg-loader --save-dev
+npm install vite-svg-loader@file:../ --save-dev
 npm run build
