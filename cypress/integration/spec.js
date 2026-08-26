@@ -1,7 +1,6 @@
 describe('Vite SVG Loader', () => {
-  it('successfully loads test page', () => {
+  before(() => {
     cy.visit('/')
-    cy.contains('Hello Vue 3 + Vite')
   })
 
   it('loads svg file', () => {

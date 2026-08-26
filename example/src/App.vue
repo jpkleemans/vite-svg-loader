@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
 
-import HelloWorld from './components/HelloWorld.vue'
 import Test from './assets/test.svg'
 import TestSkipSvgo from './assets/test.svg?skipsvgo' // skipsvgo because svgo with some params will inline styles
 import StyleTagTest from './assets/style.svg?skipsvgo'
@@ -44,6 +43,4 @@ const Async = defineAsyncComponent(() => import(`./assets/${name}.svg`))
   <div id="root">
     <img src="/root.svg" />
   </div>
-
-  <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
