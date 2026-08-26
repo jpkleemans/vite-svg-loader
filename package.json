@@ -12,7 +12,7 @@
   "types": "./index.d.ts",
   "dependencies": {
     "debug": "^4.3.4",
-    "svgo": "^3.3.3"
+    "svgo": "^3.3.4"
   },
   "devDependencies": {
     "cypress": "^8.6.0",
