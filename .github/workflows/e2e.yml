@@ -25,16 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: ./create-test-app.sh "npm create vue@latest test-app -- --default"
-      - uses: cypress-io/github-action@v6
-        with:
-          start: npm run test:preview
-
-  vue-cli-latest-ts:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: ./create-test-app.sh "npm create vue@latest test-app -- --default --ts" --typescript
+      - run: ./create-test-app.sh "npm create vue@latest test-app -- --default" --typescript
       - uses: cypress-io/github-action@v6
         with:
           start: npm run test:preview
