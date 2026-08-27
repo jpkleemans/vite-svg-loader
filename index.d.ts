@@ -1,7 +1,13 @@
 declare module 'vite-svg-loader' {
   import { Plugin } from 'vite'
   import { Config } from 'svgo'
-  function svgLoader(options?: { svgoConfig?: Config, svgo?: boolean, defaultImport?: 'url' | 'raw' | 'component' }): Plugin
+  function svgLoader(options?: {
+    svgoConfig?: Config,
+    svgo?: boolean,
+    defaultImport?: 'url' | 'raw' | 'component',
+    /** vue is externel reference from window.Vue */
+    externel?: boolean
+  }): Plugin
   export default svgLoader
 }
 

@@ -6,7 +6,7 @@ const _debug = require('debug')
 const debug = _debug('vite-svg-loader')
 
 module.exports = function svgLoader (options = {}) {
-  const { svgoConfig, svgo, defaultImport } = options
+  const { svgoConfig, svgo, defaultImport, externel } = options
 
   const svgRegex = /\.svg(\?(raw|component|skipsvgo))?$/
 
@@ -55,10 +55,10 @@ module.exports = function svgLoader (options = {}) {
         id: JSON.stringify(id),
         source: svg,
         filename: path,
-        transformAssetUrls: false
+        transformAssetUrls: false,
+        compilerOptions: { mode: externel ? 'function' : 'module' },
       })
-
-      return `${code}\nexport default { render: render }`
+      return externel ? `export default { render: (() => {${code}})()}` : `${code}\nexport default { render: render }`
     }
   }
 }
