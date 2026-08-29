@@ -1,7 +1,8 @@
 declare module 'vite-svg-loader' {
   import { Plugin } from 'vite'
   import { Config } from 'svgo'
-  function svgLoader(options?: { svgoConfig?: Config, svgo?: boolean, defaultImport?: 'url' | 'raw' | 'component' }): Plugin
+  import { SFCTemplateCompileOptions } from 'vue/compiler-sfc'
+  function svgLoader(options?: { svgoConfig?: Config, svgo?: boolean, defaultImport?: 'url' | 'raw' | 'component', template?: Partial<SFCTemplateCompileOptions> }): Plugin
   export default svgLoader
 }
 
